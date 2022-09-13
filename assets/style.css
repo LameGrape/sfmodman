@@ -13,6 +13,9 @@ body {
     font-family: Anton;
 }
 
+
+/* Button */
+
 button {
     font-family: Anton;
     font-size: 20pt;
@@ -33,4 +36,13 @@ button:hover {
 button:active {
     background: #FEF9F5;
     color: #3F3F42;
+    transition: none;
+}
+
+
+/* Mod Listing */
+
+img.mod-image {
+    width: 128px;
+    height: 128px;
 }

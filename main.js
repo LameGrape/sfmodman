@@ -11,7 +11,6 @@ const io = require("socket.io")(server)
 autoUpdater.checkForUpdatesAndNotify()
 
 const createWindow = (width, height) => {
-    console.log('test')
     const window = new BrowserWindow({
         width: width,
         height: height
@@ -52,6 +51,6 @@ webApp.get('/', (req, res) => {
 
 webApp.use(express.static('assets/'))
 
-server.listen(5628, () => {
-    console.log('listening on *:5628');
+server.listen(7219, () => {
+    console.log('listening on *:7219');
 });
