@@ -1,0 +1,28 @@
+{
+  "main": "main.js",
+  "name": "sticklib",
+  "version": "0.1.0",
+  "author": "EpicRaisin",
+  "license": "ISC",
+  "description": "",
+  "repository": "LameGrape/StickLib",
+  "dependencies": {
+    "electron-updater": "^5.2.1",
+    "express": "^4.18.1",
+    "socket.io": "^4.5.1"
+  },
+  "devDependencies": {
+    "electron": "^20.1.3",
+    "electron-builder": "^23.3.3"
+  },
+  "scripts": {
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
+  },
+  "build": {
+    "appId": "epicraisin.cellnode",
+    "win": {
+      "target": "portable"
+    }
+  }
+}
