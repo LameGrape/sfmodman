@@ -10,10 +10,11 @@ const io = require("socket.io")(server)
 
 autoUpdater.checkForUpdatesAndNotify()
 
-const createWindow = () => {
+const createWindow = (width, height) => {
+    console.log('test')
     const window = new BrowserWindow({
-        width: 800,
-        height: 600,
+        width: width,
+        height: height
     })
     window.removeMenu()
     window.loadFile('assets/index.html')
@@ -25,10 +26,13 @@ const createWindow = () => {
 }
 
 app.whenReady().then(() => {
-    createWindow()
+    const { screen } = require('electron')
+    const primaryDisplay = screen.getPrimaryDisplay()
+    const { width, height } = primaryDisplay.size
+    createWindow(width - 800, height - 400)
     app.on('activate', () => {
         if (BrowserWindow.getAllWindows().length === 0) {
-            createWindow()
+            createWindow(width - 400, height - 800)
         }
     })
 })
