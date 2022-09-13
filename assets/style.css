@@ -40,9 +40,60 @@ button:active {
 }
 
 
+/* Mod List */
+
+#mod-list {
+    position: absolute;
+    left: 50%;
+    top: 75px;
+    width: calc(50% - 10px);
+    height: calc(100% - 75px - 10px);
+    overflow-y: scroll;
+}
+
+
 /* Mod Listing */
+
+div.mod {
+    background: #000022;
+    color: white;
+    padding: 10px;
+    margin-bottom: 10px;
+    width: calc(100% - 30px);
+}
+
+div.mod-info {
+    display: inline-block;
+}
+
+div.mod-info p {
+    max-width: calc(50vw - 200px);
+}
+
+span.mod-title {
+    font-size: 25pt;
+}
+
+span.mod-author {
+    margin-left: 10px;
+}
+
+span.mod-author a {
+    color: white;
+    text-decoration: none;
+}
 
 img.mod-image {
     width: 128px;
     height: 128px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+img.author-icon {
+    width: 32px;
+    height: 32px;
+    margin-left: 10px;
+    vertical-align: middle;
+    border-radius: 50%;
 }

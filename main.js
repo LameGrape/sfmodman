@@ -1,19 +1,24 @@
 const { app, BrowserWindow } = require('electron')
 const { autoUpdater } = require("electron-updater")
-const fs = require("fs")
 
+const fs = require("fs")
 const http = require("http")
 const express = require("express")
+const path = require("path")
+
 const webApp = express()
 const server = http.createServer(webApp)
 const io = require("socket.io")(server)
 
 autoUpdater.checkForUpdatesAndNotify()
 
-const createWindow = (width, height) => {
+const createWindow = () => {
     const window = new BrowserWindow({
-        width: width,
-        height: height
+        width: 1100,
+        height: 650,
+        webPreferences: {
+            preload: path.join(__dirname, 'preload.js')
+        },
     })
     window.removeMenu()
     window.loadFile('assets/index.html')
@@ -22,16 +27,17 @@ const createWindow = (width, height) => {
             window.openDevTools()
         }
     });
+    window.webContents.setWindowOpenHandler(function(details) {
+        require('electron').shell.openExternal(details.url);
+        return { action: 'deny' }
+    });
 }
 
 app.whenReady().then(() => {
-    const { screen } = require('electron')
-    const primaryDisplay = screen.getPrimaryDisplay()
-    const { width, height } = primaryDisplay.size
-    createWindow(width - 800, height - 400)
+    createWindow()
     app.on('activate', () => {
         if (BrowserWindow.getAllWindows().length === 0) {
-            createWindow(width - 400, height - 800)
+            createWindow()
         }
     })
 })
